@@ -103,6 +103,12 @@ router.post("/delete/:id", async (req, res, next) => {
     if (!id || isNaN(id)) {
       return res.redirect("/");
     }
+
+    const itemExist = await itemService.exist(id);
+    if (!itemExist) {
+      return res.redirect("/");
+    }
+
     await itemService.deleteItem(id);
     return res.redirect("/");
   } catch (err) {

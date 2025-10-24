@@ -18,7 +18,11 @@ _soon_
 
 # Database Creation
 
-The MySQL database will store all items. The table is created [here](https://github.com/luddekn/cstrack/blob/main/models/items.js). You only need to create the database in MySQL and set its name as the value of `DB_NAME` in the `.env` file (example of the .env file can be located [here](https://github.com/luddekn/cstrack/blob/main/env_example)). Make sure that the MySQL server and database are accessible:
+The MySQL database will store all items. The table is created [here](https://github.com/luddekn/cstrack/blob/main/models/items.js). 
+
+You only need to create the database in MySQL and set its name as the value of `DB_NAME` in the `.env` file (example of the .env file can be located [here](https://github.com/luddekn/cstrack/blob/main/env_example)). 
+
+Also, make sure that the MySQL server and database are accessible.
 
 ```mysql
 CREATE DATABASE cstrack;

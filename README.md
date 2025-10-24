@@ -1,4 +1,3 @@
-<p align="center">POWERED BY</p>
 <p align="center">
   <a href="https://nodejs.org/en"><img alt="NodeJS" src="https://custom-icon-badges.demolab.com/badge/-NodeJS-green?style=for-the-badge"/></a> 
   <a href="https://expressjs.com/"><img alt="ExpressJS" src="https://custom-icon-badges.demolab.com/badge/-ExpressJS-white?style=for-the-badge"/></a> 
@@ -12,3 +11,15 @@
 <p align="center"><strong>Simple web interface for keeping track of CS2 item investments.</strong></p>
 
 ---
+
+# Installation
+
+_soon_
+
+# Database Creation
+
+The MySQL database will store all items. The table is created [here](https://github.com/luddekn/cstrack/blob/main/models/items.js). You only need to create the database in MySQL and set its name as the value of `DB_NAME` in the `.env` file (example of the .env file can be located [here](https://github.com/luddekn/cstrack/blob/main/env_example)). Make sure that the MySQL server and database are accessible:
+
+```mysql
+CREATE DATABASE cstrack;
+```

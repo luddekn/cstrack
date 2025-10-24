@@ -6,6 +6,9 @@ class ItemService {
   async getAll() {
     return this.Items.findAll({ where: {} });
   }
+  async exist(id) {
+    return this.Items.findOne({ where: { id: id } });
+  }
   async addItem(itemUrl, itemName, quantity, buyPrice) {
     return this.Items.create({
       itemUrl: itemUrl,

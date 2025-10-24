@@ -86,6 +86,18 @@ router.post("/", async (req, res, next) => {
     }
 
     const rawName = itemUrl.split("/").pop();
+    if (!rawName) {
+      return res.redirect("/");
+    }
+
+    const testUrl = await fetch(
+      `https://steamcommunity.com/market/priceoverview/?appid=730&market_hash_name=${rawName}`,
+    );
+    const data = await testUrl.json();
+    if (Object.keys(data).length === 1) {
+      return res.redirect("/");
+    }
+
     const itemName = decodeURI(rawName);
 
     await itemService.addItem(itemUrl, itemName, quantity, buyPrice);

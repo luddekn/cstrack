@@ -8,4 +8,6 @@
 
 ---
 
-Simple web interface for keeping track of CS2 item investments.
+<p align="center"><strong>Simple web interface for keeping track of CS2 item investments.</strong></p>
+
+---

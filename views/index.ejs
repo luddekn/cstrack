@@ -2,11 +2,141 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bootstrap-icons.css" />
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p><%= item %> <%= price %></p>
+  <body class="bg-dark text-white">
+    <div class="container">
+      <nav class="navbar pe-3 ps-3 border border-top-0 border-2">
+        <div>
+          <a class="navbar-brand text-warning" href="/"><%= title %></a>
+          <p>Investment tracker for CS2 items</p>
+        </div>
+      </nav>
+
+      <div class="p-3 pt-5 border border-top-0 border-2">
+        <form
+          action="/"
+          method="POST"
+          class="d-flex align-items-end gap-3 mb-5"
+        >
+          <div>
+            <label for="itemUrl" class="form-label"
+              ><strong>Steam Market Item URL</strong></label
+            >
+            <input
+              type="text"
+              name="itemUrl"
+              id="itemUrl"
+              class="form-control bg-dark border border-2 border-dark-subtle text-white"
+              value=""
+              required
+            />
+          </div>
+          <div>
+            <label for="quantity" class="form-label"
+              ><strong>Quantity</strong></label
+            >
+            <input
+              type="number"
+              min="1"
+              name="quantity"
+              id="quantity"
+              class="form-control bg-dark border border-2 border-dark-subtle text-white"
+              value="0"
+              required
+            />
+          </div>
+          <div>
+            <label for="buyPrice" class="form-label"
+              ><strong>Buy Price</strong></label
+            >
+            <input
+              type="number"
+              step="0.01"
+              min="1"
+              name="buyPrice"
+              id="buyPrice"
+              class="form-control bg-dark border border-2 border-dark-subtle text-white"
+              value="0.00"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-plus-circle-fill"></i>
+          </button>
+        </form>
+      </div>
+
+      <div>
+        <div
+          class="mb-5 border border-top-0 border-2 border-dark-subtle d-flex gap-5 ps-3 pe-3 p-5"
+        >
+          <h5>Total Spent: <%= totalSpent %></h5>
+          <% if(totalProfit === totalSpent) { %>
+          <h5>Total Profit: <%= totalProfit %></h5>
+          <% } else if(totalProfit > totalSpent) { %>
+          <h5>
+            Total Profit:
+            <span class="bg-success ps-1 pe-1"><%= totalProfit %></span>
+          </h5>
+          <% } else { %>
+          <h5>
+            Total Profit:
+            <span class="bg-danger ps-1 pe-1"><%= totalProfit %></span>
+          </h5>
+          <% }; %>
+        </div>
+        <% if(items.length > 0) { %>
+        <table class="table table-dark">
+          <thead>
+            <th>NAME</th>
+            <th>QUANTITY</th>
+            <th>BUY PRICE</th>
+            <th>PRICE</th>
+            <th>COST</th>
+            <th>PROFIT</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <% items.forEach(item => { %>
+            <tr>
+              <td class="text-truncate" style="max-width: 200px">
+                <a href="<%= item.itemUrl %>" target="_blank" class="text-info"
+                  ><%= item.itemName %></a
+                >
+              </td>
+              <td><%= item.quantity %></td>
+              <td><%= item.buyPrice %></td>
+              <td><%= item.currentPrice %></td>
+              <td><%= item.totalCost %></td>
+              <% if(item.profit < 0) { %>
+              <td class="bg-danger"><%= item.profit %></td>
+              <% } else if(item.profit === 0) { %>
+              <td><%= item.profit %></td>
+              <% } else { %>
+              <td class="bg-success"><%= item.profit %></td>
+              <% }; %>
+              <td>
+                <form action="/delete/<%= item.itemId %>" method="POST">
+                  <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <div
+          class="p-5 rounded-5"
+          style="background-color: rgba(255, 255, 255, 0.3)"
+        >
+          <h3 class="text-center text-white">No items added!</h3>
+        </div>
+        <% }; %>
+      </div>
+    </div>
   </body>
 </html>

@@ -5,6 +5,7 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original-wordmark.svg" width="60" height="60" style="margin-right: 10px;" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg" width="60" height="60" />
 </p>
-<hl>
+
+---
 
 Simple web interface for keeping track of CS2 item investments.

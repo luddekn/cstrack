@@ -40,13 +40,12 @@ router.get("/", async (req, res, next) => {
           itemUrl: item.itemUrl,
           itemName: item.itemName,
           quantity: item.quantity,
-          buyPrice: item.buyPrice.toFixed(2),
-          currentPrice: currentPrice.toFixed(2),
-          totalCost: (item.quantity * item.buyPrice).toFixed(2),
-          profit: (
-            item.quantity * currentPrice -
-            item.quantity * item.buyPrice
-          ).toFixed(2),
+          buyPrice: Number(item.buyPrice.toFixed(2)),
+          currentPrice: Number(currentPrice.toFixed(2)),
+          totalCost: Number((item.quantity * item.buyPrice).toFixed(2)),
+          profit: Number(
+            (item.quantity * (currentPrice - item.buyPrice)).toFixed(2),
+          ),
         };
       }),
     );
@@ -54,8 +53,8 @@ router.get("/", async (req, res, next) => {
     let totalSpent = 0;
     let totalProfit = 0;
     items.forEach((item) => {
-      totalSpent += item.quantity * item.buyPrice;
-      totalProfit += item.quantity * item.currentPrice - totalSpent;
+      totalSpent += item.totalCost;
+      totalProfit += item.profit;
     });
 
     return res.status(200).render("index", {

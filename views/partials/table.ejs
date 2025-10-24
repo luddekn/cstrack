@@ -1,0 +1,46 @@
+<% if(items.length > 0) { %>
+<table class="table table-dark mb-5">
+  <thead>
+    <th>NAME</th>
+    <th>QUANTITY</th>
+    <th>BUY PRICE</th>
+    <th>PRICE</th>
+    <th>COST</th>
+    <th>PROFIT</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% items.forEach(item => { %>
+    <tr>
+      <td class="text-truncate" style="max-width: 200px">
+        <a href="<%= item.itemUrl %>" target="_blank" class="text-info"
+          ><%= item.itemName %></a
+        >
+      </td>
+      <td><%= item.quantity %></td>
+      <td><%= item.buyPrice %></td>
+      <td><%= item.currentPrice %></td>
+      <td><%= item.totalCost %></td>
+      <% if(item.profit < 0) { %>
+      <td class="bg-danger"><%= item.profit %></td>
+      <% } else if(item.profit === 0) { %>
+      <td><%= item.profit %></td>
+      <% } else { %>
+      <td class="bg-success"><%= item.profit %></td>
+      <% }; %>
+      <td>
+        <form action="/delete/<%= item.itemId %>" method="POST">
+          <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<% } else { %>
+<div class="p-5 rounded-5" style="background-color: rgba(255, 255, 255, 0.3)">
+  <h3 class="text-center text-white">No items added!</h3>
+</div>
+<% }; %>

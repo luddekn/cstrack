@@ -15,32 +15,32 @@
 
 # Installation
 
-## Database Creation
-**NB! You need to setup a MySQL server in order for this application to work**
+> [!NOTE]
+> You need to set up a MySQL server for this application to work.
 
-The MySQL database will store all items. The table is created [here](https://github.com/luddekn/cstrack/blob/main/models/items.js).
-
-You only need to create the database in MySQL and set its name as the value of `DB_NAME` in the `.env` file (example of the .env file can be located [here](https://github.com/luddekn/cstrack/blob/main/env_example)).
-
-```mysql
-CREATE DATABASE cstrack;
-```
-
-## Docker
-
-First, create the `.env` file, this file will tell Sequelize how to connect to your MySQL server:
-
+The MySQL database will store all the data, and the table will be created during the setup process.
+## Step 1: Configure the `.env` File
+Create the `.env` file, which will tell Sequelize how to connect to your MySQL server. Below is an example configuration:
 ```plaintext
-DB_USERNAME=""
-DB_PASSWORD=""
-DB_NAME=""
-DB_HOST="127.0.0.1"
+DB_USERNAME="mysql-username"
+DB_PASSWORD="mysql-password"
+DB_NAME="cstrack"
+DB_HOST="server-IP"
 DB_PORT=3306
 DB_DIALECT=mysql
 PORT=3000
 ```
 
-Using Docker, run this command, this will download the `cstrack` image and load the `.env` file into the container:
+## Step 2: Database Creation
+First, create the database in MySQL. Set its name as the value of DB_NAME in the .env file.
+
+```mysql
+CREATE DATABASE cstrack;
+```
+
+## Step 3: Run the Application with Docker
+
+Using Docker, run the following command. It will download the `cstrack` image and load the `.env` file created in [step 1](#Step-1:-Configure-the-`.env`-File) into the container:
 
 ```Docker
 docker run -d --env-file .env -p 3000:3000 ludvikkristoffersen/cstrack:latest

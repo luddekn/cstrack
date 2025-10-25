@@ -65,7 +65,7 @@ router.get("/", async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).render("error");
+    res.status(500).render("error", { title: "Oops!", status: 500 });
   }
 });
 
@@ -104,7 +104,7 @@ router.post("/", async (req, res, next) => {
     return res.redirect("/");
   } catch (err) {
     console.log(err);
-    res.status(500).render("error");
+    res.status(500).render("error", { title: "Oops!", status: 500 });
   }
 });
 
@@ -124,7 +124,7 @@ router.post("/delete/:id", async (req, res, next) => {
     return res.redirect("/");
   } catch (err) {
     console.log(err);
-    res.status(500).render("error");
+    res.status(500).render("error", { title: "Oops!", status: 500 });
   }
 });
 

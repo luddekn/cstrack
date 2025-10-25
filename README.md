@@ -36,7 +36,7 @@ STEAM_CURRENCY=1
 ```
 
 > [!NOTE]
-> STEAM_CURRENCY is confirmed to work with the most common currencies, replace it in order to get your currency
+> STEAM_CURRENCY is confirmed to work with the most common currencies, replace the number with the number of your currency
 
 ## Step 2: Database Creation
 

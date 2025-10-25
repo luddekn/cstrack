@@ -42,7 +42,7 @@ CREATE DATABASE cstrack;
 
 Using Docker, run the following command. It will download the `cstrack` image and load the `.env` file created in [#Step 1](#step-1-configure-the-env-file) into the container:
 
-```Docker
+```bash
 docker run -d --env-file .env -p 3000:3000 ludvikkristoffersen/cstrack:latest
 ```
 

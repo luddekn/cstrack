@@ -14,27 +14,7 @@
 
 # Installation
 
-First create the `.env` file, here is an example of that file:
-
-```plaintext
-DB_USERNAME=""
-DB_PASSWORD=""
-DB_NAME=""
-DB_HOST="127.0.0.1"
-DB_PORT="3306"
-DB_DIALECT="mysql"
-PORT="3000"
-```
-
-Installing using Docker:
-
-```Docker
-docker run -d --env-file .env -p 3000:3000 ludvikkristoffersen/cstrack:latest
-```
-
-Now you can visit [http://localhost:3000/](http://localhost:3000/)
-
-# Database Creation
+## Database Creation
 
 The MySQL database will store all items. The table is created [here](https://github.com/luddekn/cstrack/blob/main/models/items.js).
 
@@ -45,3 +25,25 @@ Also, make sure that the MySQL server and database are accessible.
 ```mysql
 CREATE DATABASE cstrack;
 ```
+
+## Docker
+
+First create the `.env` file, here is an example of that file:
+
+```plaintext
+DB_USERNAME=""
+DB_PASSWORD=""
+DB_NAME=""
+DB_HOST="127.0.0.1"
+DB_PORT=3306
+DB_DIALECT=mysql
+PORT=3000
+```
+
+Installing using Docker:
+
+```Docker
+docker run -d --env-file .env -p 3000:3000 ludvikkristoffersen/cstrack:latest
+```
+
+Now you can visit [http://localhost:3000/](http://localhost:3000/)

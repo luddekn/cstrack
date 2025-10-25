@@ -19,19 +19,27 @@
 > You need to set up a MySQL server for this application to work.
 
 The MySQL database will store all the data, and the table will be created during the setup process.
+
 ## Step 1: Configure the .env File
+
 Create the `.env` file, which will tell Sequelize how to connect to your MySQL server. Below is an example configuration:
+
 ```plaintext
 DB_USERNAME="mysql-username"
 DB_PASSWORD="mysql-password"
 DB_NAME="cstrack"
-DB_HOST="server-IP"
+DB_HOST="127.0.0.1"
 DB_PORT=3306
 DB_DIALECT=mysql
 PORT=3000
+STEAM_CURRENCY=1
 ```
 
+> [!NOTE]
+> STEAM_CURRENCY is confirmed to work with the most common currencies, replace it in order to get your currency
+
 ## Step 2: Database Creation
+
 First, create the database in MySQL. Set its name as the value of DB_NAME in the .env file.
 
 ```mysql

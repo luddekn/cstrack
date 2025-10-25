@@ -34,7 +34,10 @@ router.get("/", async (req, res, next) => {
         const data = await apires.json();
 
         const rawprice = data.lowest_price.split(" ")[0];
-        const currentPrice = parseFloat(rawprice.replace(",", "."));
+        const currentPrice = parseFloat(
+          rawprice.replace(/\./g, "").replace(",", "."),
+        );
+
         return {
           itemId: item.id,
           itemUrl: item.itemUrl,
@@ -44,7 +47,10 @@ router.get("/", async (req, res, next) => {
           currentPrice: Number(currentPrice.toFixed(2)),
           totalCost: Number((item.quantity * item.buyPrice).toFixed(2)),
           profit: Number(
-            (item.quantity * (currentPrice - item.buyPrice)).toFixed(2),
+            (
+              item.quantity * currentPrice -
+              item.quantity * item.buyPrice
+            ).toFixed(2),
           ),
         };
       }),

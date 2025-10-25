@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models/index");
+const getPrice = require("../helpers/currency.js");
 
 const ItemService = require("../services/ItemService");
 const itemService = new ItemService(db);
@@ -33,20 +34,7 @@ router.get("/", async (req, res, next) => {
         const apires = await fetch(url);
         const data = await apires.json();
 
-        const rawprice = data.lowest_price;
-
-        let numericPrice = rawprice.replace(/[^0-9,\.]/g, "");
-        const lastPeriodIndex = numericPrice.lastIndexOf(".");
-        const lastCommaIndex = numericPrice.lastIndexOf(",");
-
-        if (lastPeriodIndex > lastCommaIndex) {
-          numericPrice = numericPrice.replace(/,/g, "");
-        } else if (lastCommaIndex > lastPeriodIndex) {
-          numericPrice = numericPrice.replace(/\./g, "");
-          numericPrice = numericPrice.replace(",", ".");
-        }
-
-        const currentPrice = parseFloat(numericPrice);
+        const currentPrice = getPrice(data.lowest_price);
 
         return {
           itemId: item.id,

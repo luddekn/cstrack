@@ -36,7 +36,7 @@ STEAM_CURRENCY=1
 ```
 
 > [!NOTE]
-> Remember to set the STEAM_CURRENCY, you can find a list of available currencies [here](https://github.com/luddekn/cstrack/main/blob/currencies.md).
+> Remember to set the STEAM_CURRENCY, you can find a list of available currencies [here](https://github.com/luddekn/cstrack/blob/main/currencies.md).
 
 ## Step 2: Database Creation
 

@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
         const url = new URL("https://steamcommunity.com/market/priceoverview/");
         const params = {
           appid: 730, // 730 is the appID for CS2
-          currency: 9, // Currency=9 is NOK
+          currency: process.env.STEAM_CURRENCY || 1,
           market_hash_name: item.itemName,
         };
 
@@ -33,10 +33,20 @@ router.get("/", async (req, res, next) => {
         const apires = await fetch(url);
         const data = await apires.json();
 
-        const rawprice = data.lowest_price.split(" ")[0];
-        const currentPrice = parseFloat(
-          rawprice.replace(/\./g, "").replace(",", "."),
-        );
+        const rawprice = data.lowest_price;
+
+        let numericPrice = rawprice.replace(/[^0-9,\.]/g, "");
+        const lastPeriodIndex = numericPrice.lastIndexOf(".");
+        const lastCommaIndex = numericPrice.lastIndexOf(",");
+
+        if (lastPeriodIndex > lastCommaIndex) {
+          numericPrice = numericPrice.replace(/,/g, "");
+        } else if (lastCommaIndex > lastPeriodIndex) {
+          numericPrice = numericPrice.replace(/\./g, "");
+          numericPrice = numericPrice.replace(",", ".");
+        }
+
+        const currentPrice = parseFloat(numericPrice);
 
         return {
           itemId: item.id,

@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
         const url = new URL("https://steamcommunity.com/market/priceoverview/");
         const params = {
           appid: 730, // 730 is the appID for CS2
-          currency: process.env.STEAM_CURRENCY || 1,
+          currency: process.env.STEAM_CURRENCY || 1, // List of all currencies: https://partner.steamgames.com/doc/store/pricing/currencies
           market_hash_name: item.itemName,
         };
 

@@ -4,6 +4,7 @@
   <a href="https://www.mysql.com/"><img alt="MySQL" src="https://custom-icon-badges.demolab.com/badge/-MySQL-blue?style=for-the-badge"/></a> 
   <a href="https://sequelize.org/"><img alt="Sequelize" src="https://custom-icon-badges.demolab.com/badge/-Sequelize-lightblue?style=for-the-badge"/></a> 
   <a href="https://getbootstrap.com/"><img alt="Bootstrap" src="https://custom-icon-badges.demolab.com/badge/-Bootstrap-purple?style=for-the-badge"/></a> 
+  <a href="https://hub.docker.com/r/ludvikkristoffersen/cstrack"><img alt="Docker" src="https://custom-icon-badges.demolab.com/badge/-Docker-blue?style=for-the-badge"/></a> 
 </p>
 
 ---

@@ -16,7 +16,7 @@
 # Installation
 
 > [!NOTE]
-> You need to set up a MySQL server for this application to work.
+> You need to set up a MySQL server for this application to work. You can easily create a MySQL database in the cloud using [https://aiven.io/mysql](https://aiven.io/mysql)
 
 The MySQL database will store all the data, and the table will be created during the setup process.
 
@@ -35,7 +35,7 @@ PORT=3000
 STEAM_CURRENCY=1
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > Remember to set the STEAM_CURRENCY, you can find a list of available currencies [here](https://github.com/luddekn/cstrack/blob/main/currencies.md).
 
 ## Step 2: Database Creation

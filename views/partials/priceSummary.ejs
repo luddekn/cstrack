@@ -5,13 +5,11 @@
     Total Spent:
     <span class="bg-white text-dark ps-1 pe-1"> <%= totalSpent %></span>
   </h5>
-  <% if(totalProfit >totalSpent) { %>
+  <% if(totalProfit => totalSpent) { %>
   <h5>
     Total Profit:
     <span class="bg-success ps-1 pe-1"><%= totalProfit %></span>
   </h5>
-  <% } else if(totalProfit === totalSpent) { %>
-  <h5>Total Profit: <%= totalProfit %></h5>
   <% } else { %>
   <h5>
     Total Profit:
